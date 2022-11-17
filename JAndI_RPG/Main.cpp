@@ -17,6 +17,13 @@ int main()
 	// Create and open a window for the game
 	RenderWindow window(vm, "RPG!!!", Style::Default);
 
+	//Create font
+	Font font;
+	font.loadFromFile("PaladinFLF.ttf");
+	sf::Text attackText;
+	attackText.setString("Attack");
+
+
 	// Create a texture to hold a graphic on the GPU
 	Texture textureBackground;
 
@@ -40,6 +47,11 @@ int main()
 	spritePlayer.setTexture(texturePlayer);
 	spritePlayer.setScale(0.75,0.75);
 	spritePlayer.setPosition(1800, 800);
+	
+	//draw attack button
+	sf::RectangleShape Box(sf::Vector2f(400.f,200.f));
+	Box.setFillColor(sf::Color(150,150,150));
+	Box.setPosition(200, 1300);
 
 
 	while (window.isOpen())
@@ -75,6 +87,7 @@ int main()
 		// Draw our game scene here
 		window.draw(spriteBackground);
 		window.draw(spritePlayer);
+		window.draw(Box);
 
 		// Show everything we just drew
 		window.display();
